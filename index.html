@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Changer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #151a11;
+            color: #f5f1df;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        /* Main Heading */
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #d8c66d;
+            margin-bottom: 45px;
+            text-transform: uppercase;
+        }
+
+        /* Image Container */
+        .image_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+
+            width: min(550px, 95%);
+            margin: auto;
+            padding: 25px;
+
+            background: #252c20;
+            border: 1px solid #515b3d;
+            border-radius: 22px;
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Image */
+        .image_container img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+
+            border: 2px solid #d8ca83;
+            border-radius: 15px;
+
+            cursor: pointer;
+
+            transition: transform 0.4s ease,
+                        box-shadow 0.4s ease,
+                        border-color 0.4s ease;
+        }
+
+        .image_container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(216, 202, 131, 0.2);
+        }
+
+        /* City Name */
+        .image_container h2 {
+            background: #d8c66d;
+            color: #202519;
+
+            padding: 12px 35px;
+            border-radius: 30px;
+
+            font-size: 22px;
+            letter-spacing: 2px;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                padding: 35px 15px;
+            }
+
+            h1 {
+                font-size: 30px;
+                margin-bottom: 30px;
+            }
+
+            .image_container img {
+                height: 230px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Image Changer</h1>
+
+    <div class="image_container">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaRo1D4jkhSqHa7hbvPZyT-GzBSzSKVe6pJQqlg76Kg&s=10" alt="London">
+
+        <h2>LONDON</h2>
+
+    </div>
+
+    <script>
+
+        let img = document.querySelector('img')
+        let h2 = document.querySelector('h2')
+
+        let prev_src = img.src
+        let prev_text = h2.innerText
+
+        img.addEventListener('mouseover', () => {
+
+            img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzK5YWr1rMKnAEdnPx4e6TqW1kwzyqZc-lKPv7z9s7AQ&s=10'
+
+            h2.innerText = 'NEW YORK'
+
+            img.style.border = '2px solid #a5bd79'
+
+        })
+
+        img.addEventListener('mouseleave', () => {
+
+            img.src = prev_src
+
+            h2.innerText = prev_text
+
+            img.style.border = '2px solid #d8ca83'
+
+        })
+
+        console.log(img)
+        console.log(h2)
+
+    </script>
+
+</body>
+</html>
